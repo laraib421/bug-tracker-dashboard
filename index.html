@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BugBoard — QA Bug Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🐞 BugBoard</h1>
+    <p>Lightweight bug tracker for QA teams</p>
+  </header>
+
+  <section class="stats" id="stats"></section>
+
+  <section class="card form-card">
+    <h2>Report a bug</h2>
+    <form id="bugForm">
+      <input id="title" placeholder="Bug title" required maxlength="120" />
+      <textarea id="steps" placeholder="Steps to reproduce" rows="3" required></textarea>
+      <div class="row">
+        <select id="severity" aria-label="Severity">
+          <option value="critical">🔴 Critical</option>
+          <option value="major">🟠 Major</option>
+          <option value="minor" selected>🟡 Minor</option>
+          <option value="trivial">🟢 Trivial</option>
+        </select>
+        <input id="env" placeholder="Environment (e.g. Chrome 130 / Android)" />
+        <button type="submit">+ Log bug</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="toolbar">
+    <input id="search" placeholder="🔍 Search bugs..." />
+    <select id="filterSeverity" aria-label="Filter severity">
+      <option value="all">All severities</option>
+      <option value="critical">Critical</option>
+      <option value="major">Major</option>
+      <option value="minor">Minor</option>
+      <option value="trivial">Trivial</option>
+    </select>
+    <button id="exportBtn" class="ghost">⬇ Export CSV</button>
+  </section>
+
+  <main class="board">
+    <div class="column" data-status="open"><h3>Open</h3><div class="list"></div></div>
+    <div class="column" data-status="progress"><h3>In Progress</h3><div class="list"></div></div>
+    <div class="column" data-status="retest"><h3>Ready for Retest</h3><div class="list"></div></div>
+    <div class="column" data-status="closed"><h3>Closed</h3><div class="list"></div></div>
+  </main>
+
+  <footer>Built by <a href="https://github.com/laraib421">laraib421</a> · drag cards between columns</footer>
+  <script src="app.js"></script>
+</body>
+</html>
